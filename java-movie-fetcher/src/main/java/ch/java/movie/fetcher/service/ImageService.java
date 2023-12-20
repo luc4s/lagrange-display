@@ -59,7 +59,7 @@ public class ImageService {
         g.drawString(movieSchedule.getTitle(), TAB_SIZE, TITLE_Y_OFFSET);
         g.setFont(new Font(this.font, Font.PLAIN, DESCRIPTION_FONT_SIZE));
         g.drawString(movieSchedule.getDescription(), TAB_SIZE, TITLE_Y_OFFSET + DESCRIPTION_FONT_SIZE);
-        g.drawString(new SimpleDateFormat("dd MMMM yyyy hh:mm", new Locale("fr", "FR")).format(movieSchedule.getDate()), TAB_SIZE, TITLE_Y_OFFSET + 2 * DESCRIPTION_FONT_SIZE);
+        g.drawString(new SimpleDateFormat("dd MMMM yyyy HH:mm", new Locale("fr", "FR")).format(movieSchedule.getDate()), TAB_SIZE, TITLE_Y_OFFSET + 2 * DESCRIPTION_FONT_SIZE);
 
         int yCursor = MOVIE_LIST_Y_OFFSET;
         for (Movie movie : movieSchedule.getMovies()) {
@@ -68,7 +68,7 @@ public class ImageService {
             yCursor += fontSize;
             for (Screening screening : movie.getScreenings()) {
                 g.setFont(new Font(this.font, Font.PLAIN, fontSize - 20));
-                g.drawString(new SimpleDateFormat("dd MMMM yyyy hh:mm", new Locale("fr", "FR")).format(screening.getDate())
+                g.drawString(new SimpleDateFormat("dd MMMM yyyy HH:mm", new Locale("fr", "FR")).format(screening.getDate())
                              + " - " + screening.getLanguage() + (!screening.getSubtitles().isEmpty() ? " - sous-titres : " + screening.getSubtitles() : ""), 6 * TAB_SIZE, yCursor);
                 yCursor += fontSize;
             }
