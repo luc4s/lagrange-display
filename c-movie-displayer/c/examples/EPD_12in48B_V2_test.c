@@ -16,9 +16,9 @@ int EPD_12in48B_V2_test(void)
     } else {
         printf("e-Paper init...\r\n");
     }
-    printf("e-Paper clear...\r\n");
-    EPD_12in48B_Clear();
-    DEV_Delay_ms(3000);
+    //printf("e-Paper clear...\r\n");
+    //EPD_12in48B_Clear();
+    //DEV_Delay_ms(3000);
     // Create a new image cache
     UBYTE  *BlackImage, *RedImage;
 
