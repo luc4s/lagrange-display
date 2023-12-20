@@ -24,8 +24,10 @@ public class MovieController {
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     ResponseEntity<Void> updateMovieSchedule(@Valid @RequestBody MovieSchedule movieSchedule) {
-        this.imageService.saveImage(movieSchedule);
-        this.libCaller.displayBMP();
-        return ResponseEntity.ok().build();
+        new Thread(() -> {
+            this.imageService.saveImage(movieSchedule);
+            this.libCaller.displayBMP();
+        }).start();
+        return ResponseEntity.noContent().build();
     }
 }
