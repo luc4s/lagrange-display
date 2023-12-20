@@ -35,4 +35,40 @@ Run the jar file in the background. It will periodically fetch the movies schedu
 
 ```shell
 nohup java -jar app-1.0.0-SNAPSHOT.jar > app.log 2>&1 &
+```
 
+## API specifications
+
+You can dynamically load a new schedule by calling a POST endpoint. First authenticate to get the JWT then call the POST endpoint. For instance,
+
+```yaml
+[POST] /api/token
+
+Body : 
+  
+{
+  "username": "lagrange",
+  "password": "lachancla"
+}
+```
+```yaml
+[POST] /api/movie
+
+Header :
+
+  Authorization: Bearer <JWT>
+
+Body:
+
+  {
+    "title":"Cinéma La Grange",
+    "description":"Programme du cinéma La Grange à Delémont",
+    "date":"2023-12-15T16:32:22.277Z",
+    "movies":
+      [
+        {
+          "title": "..."
+        }
+      ]
+  } 
+```
