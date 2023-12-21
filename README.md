@@ -37,6 +37,20 @@ Run the jar file in the background. It will periodically fetch the movies schedu
 nohup java -jar app-1.0.0-SNAPSHOT.jar > app.log 2>&1 &
 ```
 
+To start the app at boot startup, edit the cron file
+
+```shell
+crontab -e
+```
+and add the following line
+
+```shell
+@reboot cd /home/pi/lagrange-display && nohup java -jar app-1.0.0-SNAPSHOT.jar > app.log 2>&1 &
+```
+You can edit environment variables globally, for example
+```shell
+export FREQUENCY=3600000
+```
 ## API specifications
 
 You can dynamically load a new schedule by calling a POST endpoint. First authenticate to get the JWT then call the POST endpoint. For instance,
