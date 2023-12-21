@@ -29,10 +29,10 @@ public class ImageService {
     @Value("${OUTPUT_IMAGE_FILE_PATH:./movies-program.bmp}")
     private String outputFilePath;
 
-    @Value("${WIDTH:1305}")
+    @Value("${WIDTH:984}")
     private int width;
 
-    @Value("${HEIGHT:984}")
+    @Value("${HEIGHT:1305}")
     private int height;
 
     @Value("${FONT:Text}")
@@ -75,7 +75,17 @@ public class ImageService {
         }
 
         g.dispose();
-        return image;
+        return this.rotateClockwise90(image);
+    }
+
+    private BufferedImage rotateClockwise90(BufferedImage src) {
+        int w = src.getWidth();
+        int h = src.getHeight();
+        BufferedImage dest = new BufferedImage(h, w, src.getType());
+        for (int y = 0; y < h; y++)
+            for (int x = 0; x < w; x++)
+                dest.setRGB(y, w - x - 1, src.getRGB(x, y));
+        return dest;
     }
 
     private void saveImage(BufferedImage image, String filePath) {
