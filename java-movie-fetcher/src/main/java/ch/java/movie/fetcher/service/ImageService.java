@@ -38,15 +38,15 @@ public class ImageService {
     @Value("${FONT:Text}")
     private String font;
 
-    public void saveImage(MovieSchedule movieSchedule) {
-        this.saveImage(this.createImageFromMovieSchedule(movieSchedule), this.outputFilePath);
+    public void saveImageBMP(MovieSchedule movieSchedule) {
+        this.saveImageBMP(this.createImageBMPFromMovieSchedule(movieSchedule), this.outputFilePath);
     }
 
-    public void saveImage(BufferedImage image) {
-        this.saveImage(this.createImageFromPNG(image), this.outputFilePath);
+    public void saveImageBMP(BufferedImage imagePNG) {
+        this.saveImageBMP(this.createImageBMPFromPNG(imagePNG), this.outputFilePath);
     }
 
-    private BufferedImage createImageFromPNG(BufferedImage image) {
+    private BufferedImage createImageBMPFromPNG(BufferedImage image) {
         BufferedImage newImage = new BufferedImage(this.width, this.height, BufferedImage.TYPE_BYTE_BINARY);
         Graphics g = newImage.getGraphics();
         g.drawImage(image, 0, 0, null);
@@ -54,7 +54,7 @@ public class ImageService {
         return newImage;
     }
 
-    private BufferedImage createImageFromMovieSchedule(MovieSchedule movieSchedule) {
+    private BufferedImage createImageBMPFromMovieSchedule(MovieSchedule movieSchedule) {
 
         // scale the font size to fit the number of lines composing the movie list
         double totalLines = Arrays.stream(movieSchedule.getMovies())
@@ -100,7 +100,7 @@ public class ImageService {
         return dest;
     }
 
-    private void saveImage(BufferedImage image, String filePath) {
+    private void saveImageBMP(BufferedImage image, String filePath) {
         try {
             String format = "bmp";
             File outputFile = new File(filePath);

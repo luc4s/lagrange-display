@@ -23,7 +23,7 @@ public class Scheduler {
 
     @Scheduled(fixedDelayString = "${FREQUENCY:3600000}")
     public void triggerScheduler() {
-        this.imageService.saveImage(this.movieService.fetchMovieSchedulePNG());
+        this.imageService.saveImageBMP(this.movieService.fetchMovieSchedulePNG());
         this.libCaller.displayBMP();
     }
 }
