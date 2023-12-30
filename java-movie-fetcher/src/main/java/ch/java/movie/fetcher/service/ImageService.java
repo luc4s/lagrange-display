@@ -42,6 +42,10 @@ public class ImageService {
         this.saveImage(this.createImageFromMovieSchedule(movieSchedule), this.outputFilePath);
     }
 
+    public void saveImage(BufferedImage image) {
+        this.saveImage(image, this.outputFilePath);
+    }
+
     private BufferedImage createImageFromMovieSchedule(MovieSchedule movieSchedule) {
 
         // scale the font size to fit the number of lines composing the movie list
@@ -75,7 +79,7 @@ public class ImageService {
         }
 
         g.dispose();
-        return this.rotateClockwise90(image);
+        return image;
     }
 
     private BufferedImage rotateClockwise90(BufferedImage src) {
@@ -92,7 +96,7 @@ public class ImageService {
         try {
             String format = "bmp";
             File outputFile = new File(filePath);
-            ImageIO.write(image, format, outputFile);
+            ImageIO.write(this.rotateClockwise90(image), format, outputFile);
             log.info("Image saved successfully to: {}", filePath);
         } catch (IOException e) {
             log.error("Error while saving the image", e);
