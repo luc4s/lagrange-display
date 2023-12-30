@@ -43,7 +43,15 @@ public class ImageService {
     }
 
     public void saveImage(BufferedImage image) {
-        this.saveImage(image, this.outputFilePath);
+        this.saveImage(this.createImageFromPNG(image), this.outputFilePath);
+    }
+
+    private BufferedImage createImageFromPNG(BufferedImage image) {
+        BufferedImage newImage = new BufferedImage(this.width, this.height, BufferedImage.TYPE_BYTE_BINARY);
+        Graphics g = newImage.getGraphics();
+        g.drawImage(image, 0, 0, null);
+        g.dispose();
+        return newImage;
     }
 
     private BufferedImage createImageFromMovieSchedule(MovieSchedule movieSchedule) {

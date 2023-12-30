@@ -28,7 +28,7 @@ public class MovieService {
     @Value("${URL:https://cinelagrange.ch/feed}")
     private String urlJSON;
 
-    @Value("${URL:https://192.168.1.108:3001?display=compact}")
+    @Value("${URL:http://192.168.1.108:3001?display=compact}")
     private String urlPNG;
 
     public MovieSchedule fetchMovieScheduleJSON() {
