@@ -5,12 +5,21 @@
 
 ### ssh connexion
 
-To connect to the raspberry pi with ssh the first time, you need to create an empty file named `ssh` (without extension) in the boot partition of the SD card to allow incoming connexions. To be able to connect with the user `pi` password `raspberry`, put a file named `userconf.txt` containing the following line :
+To connect to the raspberry pi with ssh the first time, you need to create an empty file named `ssh` (without extension) in the root folder of the boot partition of the SD card to allow incoming connexions. To be able to connect with the user `pi` password `raspberry`, add a file named `userconf.txt` :
 
 ```
+# for default 'raspberry' password
 pi:$6$/4.VdYgDm7RJ0qM1$FwXCeQgDKkqrOU3RIRuDSKpauAbBvP11msq9X58c8Que2l1Dwq3vdJMgiZlQSbEXGaY5esVHGBNbCxKLVNqZW1
+
+# for your own password
+pi:$6$<your hashed password>
 ```
 
+To generate a more secured password, you can use `mkpasswd` for example, and paste the output in the file.
+
+```shell
+mkpasswd -m sha-512
+```
 In Windows, go to the network settings -> Wifi network -> share -> check the box "Allow other network users to connect through this computer's Internet connection" -> select the network adapter corresponding to the raspberry pi (Ethernet) -> validate. Then, connect to the raspberry pi by typing :
 
 ```shell
