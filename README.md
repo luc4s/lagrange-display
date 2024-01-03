@@ -17,6 +17,9 @@ In Windows, go to the network settings -> Wifi network -> share -> check the box
 ssh pi@raspberrypi.local
 ```
 
+Deprecated procedure :
+<details>
+
 ## Build the project
 
 After cloning the project, go to the project directory and install java, maven and the libraries needed by the screen ([official site](https://www.waveshare.com/wiki/12.48inch_e-Paper_Module_(B))). Then run
@@ -85,4 +88,38 @@ Body:
         }
       ]
   } 
+```
+</details>
+
+## Build the project
+
+Install all libraries needed for the monitor  ([official site](https://www.waveshare.com/wiki/12.48inch_e-Paper_Module_(B))).
+
+Go to `/c-movie-fetcher` and run
+
+```shell
+make clean
+make
+```
+
+Packages to install :
+
+```shell
+sudo apt-get update
+sudo apt-get install cron
+sudo apt-get install jq
+sudo apt-get install chromium
+sudo apt-get install imagemagick
+```
+
+To run the `task.sh` script periodically (let's say each 2 hours) and at reboot :
+
+```shell
+crontab -e
+```
+Then add the following lines :
+
+```shell
+@reboot nohup bash lagrange-display.sh > lagrange-display.log 2>&1 &
+0 */2 * * * nohup bash lagrange-display.sh > lagrange-display.log 2>&1 &
 ```
