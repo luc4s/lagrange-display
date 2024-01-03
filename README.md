@@ -100,6 +100,7 @@ Go to `/c-movie-fetcher` and run
 ```shell
 make clean
 make
+mv ./epd ../../epd
 ```
 
 Packages to install :

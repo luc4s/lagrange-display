@@ -13,11 +13,11 @@ void Handler(int signo)
     exit(0);
 }
 
-int main(void)
+int main(int argc, char *argv[])
 {
     // Exception handling:ctrl + c
     signal(SIGINT, Handler);
-	EPD_12in48B_V2_test();
+	EPD_12in48B_V2_test(argv[0]);
     DEV_ModuleExit();
     return 0;
 }

@@ -3,7 +3,7 @@
 
 extern int Version;
 
-int EPD_12in48B_V2_test(void)
+int EPD_12in48B_V2_test(char* filename)
 {
 	// Specify the version
 	Version = 2;
@@ -44,7 +44,7 @@ int EPD_12in48B_V2_test(void)
     printf("**************\r\n");
     printf("Read BMP file:\r\n");
     Paint_SelectImage(BlackImage);
-    GUI_ReadBmp("./movies-program.bmp", 0, 0);
+    GUI_ReadBmp(filename, 0, 0);
     EPD_12in48B_Display(BlackImage, RedImage);
     DEV_Delay_ms(2000);
     printf("**************\r\n");
