@@ -19,8 +19,8 @@ fi
 
 if [ "$curr_updated_date" -gt "$prev_updated_date" ]; then
     echo "updating last date and refreshing image..."
-    chromium --no-sandbox --headless --disable-gpu --screenshot=movies-program.png --window-size=984x1305 --disable-software-rasterizer $url
-    convert movies-program.png -rotate 90 movies-program.bmp
+    chromium-browser --no-sandbox --headless --disable-gpu --screenshot=movies-program.png --window-size=984x1305 --disable-software-rasterizer $url
+    convert movies-program.png -rotate 270 -threshold 50% -monochrome movies-program.bmp
     rm -rf movies-program.png
     ./epd movies-program.bmp
 else

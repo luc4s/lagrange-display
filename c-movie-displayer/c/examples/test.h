@@ -7,5 +7,5 @@
 #include "GUI_Paint.h"
 #include "GUI_BMPfile.h"
 
-int EPD_12in48B_V2_test(void);
+int EPD_12in48B_V2_test(char*);
 #endif
