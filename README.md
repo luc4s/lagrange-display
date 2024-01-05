@@ -122,7 +122,7 @@ sudo apt-get install chromium
 sudo apt-get install imagemagick
 ```
 
-To run the `task.sh` script periodically (let's say each 2 hours) and at reboot :
+To run the `lagrange-display.sh` script periodically (let's say each 2 hours) and at reboot :
 
 ```shell
 crontab -e
@@ -130,6 +130,9 @@ crontab -e
 Then add the following lines :
 
 ```shell
-@reboot nohup bash lagrange-display.sh > lagrange-display.log 2>&1 &
-0 */2 * * * nohup bash lagrange-display.sh > lagrange-display.log 2>&1 &
+SHELL=/bin/bash
+PATH=/usr/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/games:/usr/games:/usr/share/maven/bin
+@reboot export DISPLAY=:0 && cd /home/pi/lagrange-display && ./lagrange-display.sh > /home/pi/app.log
+35 * * * *  export DISPLAY=:0 && cd /home/pi/lagrange-display && ./lagrange-display.sh > /home/pi/app.log
+
 ```
