@@ -2,6 +2,13 @@
 
 url=https://cinelagrange.ch/compact
 
+
+# Check for internet connection
+if ! ping -c 1 -W 30 cinelagrange.ch &> /dev/null; then
+    echo "cinelagrange.ch is offline. Exiting script."
+    exit 1
+fi
+
 # fetching last updated date to know if image refresh is necessary
 # by comparing it with last registered updated date (to timestamps)
 curr_updated_date=$(curl https://cinelagrange.ch/feed | jq -r '.date')
