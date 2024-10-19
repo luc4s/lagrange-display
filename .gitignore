@@ -49,6 +49,7 @@ Thumbs.db
 *.mov
 *.wmv
 
-c-movie-displayer/c/bin/**
 epd
 last-updated-date.txt
+*.bmp
+c-movie-displayer/c/bin/
