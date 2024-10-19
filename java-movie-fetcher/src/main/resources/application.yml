@@ -1,6 +1,0 @@
-server:
-  forward-headers-strategy: framework
-  servlet:
-    context-path: /api
-  port: 8081
-
