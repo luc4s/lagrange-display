@@ -49,3 +49,6 @@ Thumbs.db
 *.mov
 *.wmv
 
+*.o
+epd
+last-updated-date.txt
